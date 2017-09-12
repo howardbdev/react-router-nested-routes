@@ -100,12 +100,12 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import MoviesList from '../components/MoviesList';
-import MovieShow from './MovieShow';
+import MoviesShow from './MoviesShow';
 
 const MoviesPage = ({ match, movies }) => 
   <div>
     <MoviesList movies={movies} />
-    <Route path={`${match.url}/:movieId`} component={MovieShow}/>
+    <Route path={`${match.url}/:movieId`} component={MoviesShow}/>
     <Route exact path={match.url} render={() => (
       <h3>Please select a Movie from the list.</h3>
     )}/>
@@ -149,3 +149,4 @@ Awesome! Refresh the page at `/movies`. Now, clicking a link changes the route, 
 ### Summary
 
 So far we saw how to set up our nested routes. We do so by making two `Route` componets. One `Route` component that renders a component if it is a perfect match with the url or the nested `Route` if it includes the `match.url` and the nested key(in this case :movieId).
+<p class='util--hide'>View <a href='https://learn.co/lessons/react-router-nested-routes'>React Router Nested Routes</a> on Learn.co and start learning to code for free.</p>
