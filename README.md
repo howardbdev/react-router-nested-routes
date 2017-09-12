@@ -70,26 +70,26 @@ export default MoviesList;
 
 ### Linking to the Show
 
-Right now, we're using __React Router__ to display the __MoviesPage__ component when the url is `/movies` (You can look at the code in `/src/containers/App.js`). Let's add in our first nested route so that going to '/movies/:movieId' will display details about a given movie using a __MoviesShow__ component.
+Right now, we're using __React Router__ to display the __MoviesPage__ component when the url is `/movies` (You can look at the code in `/src/containers/App.js`). Let's add in our first nested route so that going to '/movies/:movieId' will display details about a given movie using a __MovieShow__ component.
 
-let's create our __MoviesShow__ component. Later on, we will see that this component will need to connect to the store in order to figure out which Movie it should render, but first let's put it in our `containers` directory.
+let's create our __MovieShow__ component. Later on, we will see that this component will need to connect to the store in order to figure out which Movie it should render, but first let's put it in our `containers` directory.
 
 >Note: Remember, containers are components that are directly connected to the store via the connect function.   
 
 ```javascript
-// ./src/containers/MoviesShow.js
+// ./src/containers/MovieShow.js
 import React from 'react';
 
-const MoviesShow = props => {
+const MovieShow = props => {
   
   return (
     <div>
-      <h3>Movies Show Component!</h3>
+      <h3>Movie Show Component!</h3>
     </div>
   );
 }
 
-export default MoviesShow;
+export default MovieShow;
 ```
 
 Next, we need to add a nested route in our `src/containers/MoviesPage.js` file to display the MovieShow container if that route matches `/movies/:movieId`
@@ -100,12 +100,12 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import MoviesList from '../components/MoviesList';
-import MoviesShow from './MoviesShow';
+import MovieShow from './MovieShow';
 
 const MoviesPage = ({ match, movies }) => 
   <div>
     <MoviesList movies={movies} />
-    <Route path={`${match.url}/:movieId`} component={MoviesShow}/>
+    <Route path={`${match.url}/:movieId`} component={MovieShow}/>
     <Route exact path={match.url} render={() => (
       <h3>Please select a Movie from the list.</h3>
     )}/>
@@ -144,7 +144,7 @@ const MoviesList = ({ movies }) => {
 export default MoviesList;
 ```
 
-Awesome! Refresh the page at `/movies`. Now, clicking a link changes the route, but we're not actually seeing any content about that movie that would be in our MoviesShow page. You should only see the text `Movies Show Component!`. Don't worry we will work on showing the movie details in the next lesson.
+Awesome! Refresh the page at `/movies`. Now, clicking a link changes the route, but we're not actually seeing any content about that movie that would be in our MovieShow page. You should only see the text `Movie Show Component!`. Don't worry we will work on showing the movie details in the next lesson.
 
 ### Summary
 
